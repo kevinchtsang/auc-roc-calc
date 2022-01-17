@@ -10,22 +10,52 @@
     <br>$$A_{min}=\frac{(sensitivity + specificity)}{2}$$
     </p>
     <h1>Calculator</h1>
-    
-    <div>
-      <label for="sen">Sensitivity:</label>
-      <input type="number" id="sen" min="0" max="1"><br><br>
-      <label for="spe">Specificity:</label>
-      <input type="number" id="spe" min="0" max="1"><br><br>
-      <input type="submit" onclick="auc_calc()" value="Submit">
-    </div>
-    <p>AUC:</p>
-    <p id="auc"></p> 
-    <script>
-    auc_calc(){
-      var F = 1 - document.getElementById("spe").value;
-      var H = document.getElementById("sen").value;
-      document.getElementById("auc").innerHTML = F+H;
+
+
+<p>Sensitivity: <input type="number" id="sen" size="5" min="0" max="1"/></p><br>
+
+<p>Specificity: <input type="number" id="spe" size="5" min="0" max="1"/></p><br>
+
+<button id="add" onclick="auc_calc()">calculate</button>
+
+<p>AUC max: <input id="outputMax" size="5" min="0" max="1"/></p>
+<p>AUC min: <input id="outputMin" size="5" min="0" max="1"/></p>
+<p>AUC estimate: <input id="outputAvg" size="5" /></p>
+
+<p id="idOne">
+<p id="idTwo">
+<p id="answer">
+
+</p>
+
+<script>
+
+    function auc_calc() {
+        var F = 1 - Number(document.getElementById("spe").value);
+        var H = Number(document.getElementById("sen").value);
+        var aucMax;
+        var aucMin;
+        var aucAvg;
+
+        
+        if ((F<=0.5)&(0.5<H)){
+          aucMax = 1 - (2*F*(1 - H));
+        } else if ((F<=H)&(H<0.5)){
+          aucMax = 1 - (F/(2*H));
+        } else if ((0.5<F)&(F<=H)){
+          aucMax = 1 - (1 - H)/(2*(1 - F));
+        }
+        
+        aucMin = 0.5*(1-F+H);
+        aucAvg = 0.5*(aucMax + aucMin)
+        
+
+        document.getElementById("idOne").value = F;
+        document.getElementById("idTwo").value = H;
+        document.getElementById("outputMax").value = aucMax;
+        document.getElementById("outputMin").value = aucMin;
+        document.getElementById("outputAvg").value = aucAvg;
+
     }
-    </script>
-  </body>
+</script>
 </html>
