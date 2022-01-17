@@ -21,3 +21,10 @@ Let *F* denote (false alarm rate) false positive rate = 1 - specificity; *H* den
 <img src="https://render.githubusercontent.com/render/math?math=A_{max}=1 - \frac{1 - H}{2(1 - F)}"> if <img src="https://render.githubusercontent.com/render/math?math=0.5<F \leq H ">
 
 ### Calculator
+<div>
+  <label for="sen">Sensitivity:</label>
+  <input type="number" id="sen" min="0" max="1"><br><br>
+  <label for="spe">Specificity:</label>
+  <input type="number" id="spe" min="0" max="1"><br><br>
+  <input type="submit" value="Submit">
+</div>
