@@ -21,10 +21,12 @@
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' async></script>
   </head>
+
   <body>
-    <p>Although it is best to estimate the receiver operating characteristic (ROC) curve using multiple coordinates of sensitivity and specificity, this is not always possible. Here, we will use the esimation given by Zhang and Mueller <a href="https://link.springer.com/article/10.1007/s11336-003-1119-8">[1]</a></p>
+    <h1>AUC-ROC Online Calculator for a Single Point</h1>
+    <p>Although it is best to estimate the receiver operating characteristic (ROC) curve using multiple coordinates of sensitivity and specificity, this is not always possible. Here, we will use the esimation given by Zhang and Mueller (2005)<a href="https://link.springer.com/article/10.1007/s11336-003-1119-8">[1]</a> of the AUC given a single point.</p>
     <h1>Summary of method</h1>
-    <p>The lower and upper bounds of the AUC (Area under ROC curve) given a single point (x = 1-specificity, y = sensitivity) can be estimated geometrically. The lower bound is the area of the quadrilateral defined between (0,0), point p, (1,1), and (1,0) which is  
+    <p>The lower and upper bounds of the AUC (Area under ROC curve) given a single point (x = 1 - specificity, y = sensitivity) can be estimated geometrically. The lower bound is the area of the quadrilateral defined between (0,0), point p, (1,1), and (1,0) which is  
     <br>$$A_{min}=\frac{(sensitivity + specificity)}{2}$$
     </p>
     <p>There are three cases of ROC curves, in the most general case, the curve has five (three non-axis) line segments; in the other two cases, one of the line segments degenerates to a point. Depending on where is the point of data, there is a different upper bound (see below). The AUC can be approximated as the mean of the maximum area and minimum area.
