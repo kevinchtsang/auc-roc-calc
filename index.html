@@ -20,10 +20,33 @@
     </script>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    <style>
+* {
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    </style>
   </head>
 
   <body>
     <h1>AUC-ROC Online Calculator for a Single Point</h1>
+    
+    <div class="row">
+    <div class="column">
     <p>Although it is best to estimate the receiver operating characteristic (ROC) curve using multiple coordinates of sensitivity and specificity, this is not always possible. Here, we will use the esimation given by Zhang and Mueller (2005)<a href="https://link.springer.com/article/10.1007/s11336-003-1119-8">[1]</a> of the AUC given a single point.</p>
     <h2>Summary of method</h2>
     <p>The lower and upper bounds of the AUC (Area under ROC curve) given a single point (x = 1 - specificity, y = sensitivity) can be estimated geometrically. The lower bound is the area of the quadrilateral defined between (0,0), point p, (1,1), and (1,0) which is  
@@ -31,7 +54,8 @@
     </p>
     <p>There are three cases of ROC curves, in the most general case, the curve has five (three non-axis) line segments; in the other two cases, one of the line segments degenerates to a point. Depending on where is the point of data, there is a different upper bound (see below). The AUC can be approximated as the mean of the maximum area and minimum area.
 
-    <br><br>Let $F$ denote (false alarm rate) false positive rate = 1 - specificity; $H$ denote (hit rate) true positive rate = sensitivity
+    <br><br>Let $F$ denote (false alarm rate) false positive rate = 1 - specificity;
+    <br> $H$ denote (hit rate) true positive rate = sensitivity
     </p>
     
     <p>
@@ -43,7 +67,9 @@
     \end{cases}
     \]
     </p>
-
+    </div>
+    
+    <div class="column" style="background-color:#AFEEEE;">
     <h2>Calculator</h2>
 
 
@@ -64,6 +90,8 @@
     <p id="idTwo">
 
     </p>
+    </div>
+    </div>
 
 <script>
     function auc_calc() {
@@ -93,12 +121,11 @@
         
         document.getElementById("idOne").value = F;
         document.getElementById("idTwo").value = H;
-        document.getElementById("outputMax").value = aucMax;
-        document.getElementById("outputMin").value = aucMin;
-        document.getElementById("outputAvg").value = aucAvg;
+        document.getElementById("outputMax").value = parseFloat(aucMax.toFixed(6));
+        document.getElementById("outputMin").value = parseFloat(aucMin.toFixed(6));
+        document.getElementById("outputAvg").value = parseFloat(aucAvg.toFixed(6));
 
         equ_div = document.getElementById("equation");
-        <!--document.body.insertBefore(equ, equ_div);-->
         equ_div.textContent = equ2;
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'equationDynamic']);
 
