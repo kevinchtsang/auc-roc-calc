@@ -47,17 +47,17 @@
     <h2>Calculator</h2>
 
 
-    <p>Sensitivity: <input type="number" id="sen" size="5" min="0" max="1"/></p><br>
+    <p>Sensitivity: <input type="number" id="sen" size="7" min="0" max="1" step="0.1"/></p><br>
 
-    <p>Specificity: <input type="number" id="spe" size="5" min="0" max="1"/></p><br>
+    <p>Specificity: <input type="number" id="spe" size="7" min="0" max="1" step="0.1"/></p><br>
 
     <button id="add" onclick="auc_calc()">calculate</button>
 
     <div id="equation"></div>
 
-    <p>AUC max: <input id="outputMax" size="5" min="0" max="1" step=0.1/></p>
-    <p>AUC min: <input id="outputMin" size="5" min="0" max="1" step=0.1/></p>
-    <p>AUC estimate: <input id="outputAvg" size="5" /></p>
+    <p>AUC max: <output id="outputMax" size="7"/></p>
+    <p>AUC min: <output id="outputMin" size="7"/></p>
+    <p>AUC estimate: <output id="outputAvg" size="7" /></p>
     
     
     <p id="idOne">
