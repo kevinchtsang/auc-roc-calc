@@ -112,7 +112,8 @@
           aucMax = 1 - (1 - H)/(2*(1 - F));
           equ2 = "$0.5 < F \\leq H, A_{max} = 1 - \\frac{1 - H}{2(1 - F)}$"
         } else {
-          equ2 = "";
+          equ2 = "Invalid input";
+          alert("Invalid! F (" + F + ") must be less than or equal to H (" + H + ")")
         }
         
         aucMin = 0.5*(1-F+H);
